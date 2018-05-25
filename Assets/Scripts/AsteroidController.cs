@@ -7,13 +7,13 @@ public class AsteroidController : MonoBehaviour {
     public float appliedForce = 20f;
     public float angularSpeed = 5f;
     public string tagToDestroyOnCollision = "Player";
+    public GameObject explosion;
 
-    private int stage = 1;
     void Start()
     {
         //The Asteroid Manager will handle all movement of the asteroids
         AsteroidsManager.Instance.RegisterAsteroid(gameObject);
-            
+
         RadomizeDirection(transform.position);
         
     }
@@ -28,21 +28,9 @@ public class AsteroidController : MonoBehaviour {
     }
     private void OnDestroy()
     {
+        Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+        ScoreManager.Instance.Increase(10);
         AsteroidsManager.Instance.UnregisterAsteroid(gameObject);
-        if (stage == 0)
-            return;
-        List<GameObject> children = new List<GameObject>();
-        for (int i = 0; i < 2; i++)
-        {
-            var child = Instantiate(this.gameObject, this.transform.position, Random.rotation);
-            child.transform.localScale *= .5f;
-            AsteroidsManager.Instance.RegisterAsteroid(child);
-            var childCtrlr = child.GetComponent<AsteroidController>();
-            childCtrlr.RadomizeDirection(transform.position);
-            childCtrlr.stage = stage - 1;
-            children.Add(child);
-            child.SetActive(true);
-        }
     }
 
     public void RadomizeDirection(Vector3 newPosition)

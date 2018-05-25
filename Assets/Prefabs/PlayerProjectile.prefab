@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 114812316116396112}
   - component: {fileID: 54818979184788520}
   - component: {fileID: 136810751716235350}
-  - component: {fileID: 114205852000408126}
-  - component: {fileID: 114644426100125166}
+  - component: {fileID: 114282372592609206}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Player
@@ -131,7 +130,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &114205852000408126
+--- !u!114 &114282372592609206
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -139,24 +138,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9496b5b7093def64986e9873dc11817b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ba921f8145946f44896411125200b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damages:
-  - tag: Enemy
-    damage: 1
---- !u!114 &114644426100125166
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ec807f03b325d346b8295c39c04b3c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPoints: 1
+  damage: 25
+  tagToDamage: Enemy
 --- !u!114 &114812316116396112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,6 +157,7 @@ MonoBehaviour:
   projectileVelocity: 15
   timeToLive: 3
   tagToDamage: Enemy
+  exposion: {fileID: 1803824700397898, guid: ac1b8912f369e8946b19c3aa510e7cd7, type: 2}
 --- !u!136 &136810751716235350
 CapsuleCollider:
   m_ObjectHideFlags: 1

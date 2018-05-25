@@ -25,8 +25,9 @@ GameObject:
   - component: {fileID: 135748771441402018}
   - component: {fileID: 54367953420059262}
   - component: {fileID: 114342227315843468}
-  - component: {fileID: 114134631974028930}
-  - component: {fileID: 114732251039689944}
+  - component: {fileID: 114825649777896980}
+  - component: {fileID: 114148071230203042}
+  - component: {fileID: 82048606539476492}
   m_Layer: 0
   m_Name: Asteroid_01 1
   m_TagString: Enemy
@@ -132,6 +133,86 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!82 &82048606539476492
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739734219323436}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114059849706778912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,7 +227,8 @@ MonoBehaviour:
   appliedForce: 100
   angularSpeed: 50
   tagToDestroyOnCollision: Player
---- !u!114 &114134631974028930
+  explosion: {fileID: 100004, guid: 2857e183f4cd3df4e9096e5b578bd32f, type: 2}
+--- !u!114 &114148071230203042
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -154,10 +236,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1739734219323436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ec807f03b325d346b8295c39c04b3c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ba921f8145946f44896411125200b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 1
+  damage: 10
+  tagToDamage: Player
 --- !u!114 &114342227315843468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,7 +257,9 @@ MonoBehaviour:
   fireRate: 2
   projectileTimeToLive: 3
   firstShotDelay: 1
---- !u!114 &114732251039689944
+  shootSound: {fileID: 8300000, guid: 1be4472894949437694aead55c6da60f, type: 3}
+  volume: 0.5
+--- !u!114 &114825649777896980
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -182,12 +267,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1739734219323436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9496b5b7093def64986e9873dc11817b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7675b79a7a9a45e4a879e1854e83aca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damages:
-  - tag: Player
-    damage: 1
+  health: 50
+  splitChunksCount: 2
+  chunkPrefab: {fileID: 1341891061387464, guid: 8dd9cc7d17f30dc4699f4e1534321315,
+    type: 2}
+  spawnOffset: {x: 1, y: 0, z: 0}
+  text: {fileID: 0}
 --- !u!135 &135748771441402018
 SphereCollider:
   m_ObjectHideFlags: 1

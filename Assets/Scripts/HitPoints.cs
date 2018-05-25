@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
+// DON'T USE THIS DEPRECATED!!!
 public class HitPoints : MonoBehaviour {
-
     public int hitPoints = 1;
-
     void OnCollisionEnter(Collision collision)
     {
         var dmgComponent = collision.gameObject.GetComponent<Damage>();
@@ -14,4 +14,6 @@ public class HitPoints : MonoBehaviour {
         if(hitPoints <= 0)
             Destroy(gameObject);
     }
+
 }
+// DON'T USE THIS DEPRECATED!!!

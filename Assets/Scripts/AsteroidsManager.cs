@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class AsteroidsManager : MonoBehaviour {
-
     protected class PlayableGridCell
     {
         public Bounds cellBounds;
@@ -76,8 +75,9 @@ public class AsteroidsManager : MonoBehaviour {
             {
                 if (asteroid.transform.position[i] < -halfExtents[i] || asteroid.transform.position[i] > halfExtents[i])
                 {
-                    RandomizeAsteroidTransform(asteroid);
-                    break;
+                    Vector3 pos = asteroid.transform.position;
+                    pos[i] = -pos[i];
+                    asteroid.transform.position = pos;
                 }
             }
             MarkOccupiedCells(asteroid);

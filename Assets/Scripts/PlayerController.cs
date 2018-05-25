@@ -6,12 +6,11 @@ public class PlayerController : MonoBehaviour {
     public float speed = 0.2f;
     public float rotationSpeed = 180f;
     public Vector3 halfExtents = new Vector3(6, 0, 4);
-
+    public GameObject explosion;
     private void Start()
     {
         AsteroidsManager.Instance.RegisterPlayer(gameObject);
     }
-    
 
     void Update ()
     {
@@ -42,6 +41,7 @@ public class PlayerController : MonoBehaviour {
     }
     private void OnDestroy()
     {
+        Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
         AsteroidsManager.Instance.UnregisterPlayer(gameObject);
     }
 }

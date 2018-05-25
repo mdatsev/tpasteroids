@@ -10,7 +10,13 @@ public class Weapon : MonoBehaviour {
     public float projectileTimeToLive = 3f;
     public float firstShotDelay = 0.0f;
     private float nextShotTime = 0.0f;
-
+    public AudioClip shootSound;
+    private AudioSource source;
+    public float volume = .5f;
+    void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
     public void Start()
     {
         nextShotTime = Time.time + firstShotDelay;
@@ -19,6 +25,8 @@ public class Weapon : MonoBehaviour {
     {
         if (Time.time > nextShotTime)
         {
+            if(source != null)
+                source.PlayOneShot(shootSound, volume);
             GameObject newProjectile = Instantiate(projectileToSpawn, shotSpawnTransform.position, shotSpawnTransform.rotation);
             Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), newProjectile.GetComponent<Collider>());
             nextShotTime = Time.time + fireRate;
